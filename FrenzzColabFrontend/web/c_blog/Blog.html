@@ -1,0 +1,38 @@
+<html>
+<head>
+<title>Login Page</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+</head>
+<body>
+<div ng-controller="BlogController" style="padding-top:60px";>
+
+<form  id="blogform"  "method="post" >
+<table width="35%" background-color="#0099CC" align="center" >
+
+<tr>
+<td colspan=2><center><font size=4><b>Blog Form</b></font></center></td>
+</tr>
+
+<tr>
+<td>Blog Name:</td>
+<td><input type="text" size=25 name="blogName" ng-model="blog.blogName"></td>
+</tr>
+
+<tr>
+<td>Blog Content:</td>
+<td><input type="text" size=25 name="blogContent" ng-model="blog.blogContent"></td>
+</tr>
+
+<tr>
+<td ><input type="Reset"  value="Reset"></td>
+<td><input type="submit"  value="Insert Blog" ng-click="addBlog(blog)"></td>
+</tr>
+</table>
+
+</form>
+</div>
+</body>
+</html>

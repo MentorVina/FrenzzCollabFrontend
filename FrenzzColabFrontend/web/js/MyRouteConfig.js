@@ -11,6 +11,9 @@ myApp.config(function($routeProvider) {
 	.when("/Register", {
 		templateUrl : "template/Register.jsp"
 	})
+	.when("/blog",{
+		templateUrl : "c_blog/Blog.html"
+	})
 	.when("/About Us", {
 		templateUrl : "template/About Us.htm"
 	})
