@@ -12,7 +12,7 @@
 </head>
 <body><br><br><br><br>
 <div class="container">
-  <h1>Bootstrap validation</h1>
+  <h1>Registration Form</h1>
   <form class="form-horizontal" id="validateForm">
 <div class="row">
 	<div class="col-md-offset-1 col-md-4">
