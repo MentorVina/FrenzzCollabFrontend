@@ -14,6 +14,9 @@ myApp.config(function($routeProvider) {
 	.when("/blog",{
 		templateUrl : "c_blog/Blog.html"
 	})
+	.when("/displayBlog",{
+		templateUrl : "c_blog/DisplayBlog_page.html"
+	})
 	.when("/About Us", {
 		templateUrl : "template/About Us.htm"
 	})

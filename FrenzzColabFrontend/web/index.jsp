@@ -15,6 +15,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+	
 <script src="js/MyRouteConfig.js"></script>
 <script src="c_blog/BlogController.js"></script>
 
@@ -71,13 +72,13 @@ span {
 				<li><a href="#!login">Login</a></li>
 				<li><a href="#!Register">Register</a></li>
 				<li><a href="#!blog">Blog</a></li>
+				<li><a href="#!displayBlog">BlogList</a></li>
 				<li><a href="#!About Us">About Us</a></li>
 				<li><a href="#!Contact Us">Contact Us</a></li>
 			</ul>
 		</div>
 		</nav>
 	</div>
-	This is index
 	<div ng-view> </div>
 	<jsp:include page="footer.jsp" />
 

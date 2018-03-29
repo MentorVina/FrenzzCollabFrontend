@@ -16,6 +16,18 @@ myApp.controller("BlogController",function($scope,$http,$location)
 	     });			
 	};
 	
+	
+	
+	$scope.deleteBlog=function(blogId)
+	{
+		console.log('Enter into the delete blog method');
+		$http.delete('http://localhost:8081/FrenzzColabMiddleWare/delete/'+blogId)
+		.then(fetchAllBlog(),function(response)
+				{
+			        console.log('Deleted');
+			        $location.path("/displayBlog");
+				});
+	};
 	function fetchAllBlog()
 	{
 		console.log('Fetching All Blogs');
@@ -24,6 +36,8 @@ myApp.controller("BlogController",function($scope,$http,$location)
 				{
 			            $scope.blogdata=response.data;
 				});
-	};
+	}
+	
+	fetchAllBlog();
 	
 });
