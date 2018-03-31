@@ -191,22 +191,21 @@ hr{
 <body>
 
 <div class="container" ng-controller="BlogController">
-    <h1 class="welcome text-center" style="padding-top:35px">Welcome to <br> Blog Page</h1>
+    <h1 class="welcome text-center" style="padding-top:35px">Update Blog Page</h1>
         <div class="card card-container">
-        <h2 class='login_title text-center'>Blog</h2>
+        <h2 class='login_title text-center'>Update Here</h2>
         <hr>
 
             <form class="form-signin" id="blogform" method="post">
                 <span id="reauth-email" class="reauth-email"></span>
                 <p class="input_title">Blog Name</p>
-                <input type="text" name="blogName"  ng-model="blog.blogName" class="login_box" placeholder="Enter Blog Name" required autofocus/>
+                <input type="text" name="blogName"  ng-model="blog.blogName"   class="login_box"  />
                 <p class="input_title">Blog Contents</p>
-                <textarea cols=38 name="blogContent" ng-model=blog.blogContent class="login_box" placeholder="Enter Blog Contents" required></textarea>
+                <textarea cols=38 name="blogContent" ng-model=blog.blogContent    class="login_box"  ></textarea>
              
-                <input type="submit" class="btn btn-primary  btn-lg"  value="Insert Blog" ng-click="insertBlog()" style="padding-left:20px"/ >
+                <input type="submit" class="btn btn-primary  btn-lg"  value="Update Blog" ng-click="updateBlog()" style="padding-left:20px"/ >
                 <input type="reset" class="btn btn-primary  btn-lg" value="Reset">
             </form><!-- /form -->
-            
         </div><!-- /card-container -->
     </div><!-- /container -->
 </body>

@@ -18,6 +18,7 @@
 	
 <script src="js/MyRouteConfig.js"></script>
 <script src="c_blog/BlogController.js"></script>
+<script src="c_forum/ForumController.js"></script>
 
 <style>
 .navbar-brand {
@@ -73,6 +74,8 @@ span {
 				<li><a href="#!Register">Register</a></li>
 				<li><a href="#!blog">Blog</a></li>
 				<li><a href="#!displayBlog">BlogList</a></li>
+		          <li><a href="#!forum">Forum</a></li>
+		           <li><a href="#!displayForum">ForumList</a></li>
 				<li><a href="#!About Us">About Us</a></li>
 				<li><a href="#!Contact Us">Contact Us</a></li>
 			</ul>
