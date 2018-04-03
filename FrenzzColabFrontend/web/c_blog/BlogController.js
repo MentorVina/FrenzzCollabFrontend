@@ -80,7 +80,6 @@ myApp.controller("BlogController",function($scope,$http,$location)
 	}
 	
 	
-	
 	function fetchAllBlog()
 	{
 		console.log('Fetching All Blogs');

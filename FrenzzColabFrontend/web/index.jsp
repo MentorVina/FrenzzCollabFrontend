@@ -15,10 +15,15 @@
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+<script 
+	src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.0/js.cookie.js"></script>
+	<script  
+	src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.0/js.cookie.js"></script>
 	
 <script src="js/MyRouteConfig.js"></script>
 <script src="c_blog/BlogController.js"></script>
 <script src="c_forum/ForumController.js"></script>
+<script src="c_job/JobController.js"></script>
 
 <style>
 .navbar-brand {
@@ -76,6 +81,9 @@ span {
 				<li><a href="#!displayBlog">BlogList</a></li>
 		          <li><a href="#!forum">Forum</a></li>
 		           <li><a href="#!displayForum">ForumList</a></li>
+		           <li><a href="#!job">Job</a></li>
+		           <li><a href="#!displayJob">JobList</a></li>
+		              <li><a href="#!searchJob">Job Search</a></li>
 				<li><a href="#!About Us">About Us</a></li>
 				<li><a href="#!Contact Us">Contact Us</a></li>
 			</ul>

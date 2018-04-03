@@ -1,15 +1,15 @@
 
-var myApp = angular.module("myApp", [ "ngRoute" ]);
+var myApp=angular.module("myApp",['ngRoute',,'ngCookies']);
 
 myApp.config(function($routeProvider) {
 	$routeProvider.when("/", {
 		templateUrl : "/index.jsp"
 	})
 	.when("/login", {
-		templateUrl : "template/login.jsp"
+		templateUrl : "c_user/login.html"
 	})
 	.when("/Register", {
-		templateUrl : "template/Register.jsp"
+		templateUrl : "c_user/Register.jsp"
 	})
 	.when("/blog",{
 		templateUrl : "c_blog/Blog.html"
@@ -28,6 +28,16 @@ myApp.config(function($routeProvider) {
 	.when("/displayForum",{
 		templateUrl : "c_forum/DisplayForum_page.html"
 	})
+	.when("/job",{
+		templateUrl : "c_job/Job.html"
+	})
+	
+	.when("/displayJob",{
+		templateUrl : "c_job/DisplayJob_page.html"
+	})
+	.when("/searchJob",{
+		templateUrl : "c_job/JobSearch_page.html"
+	})
 	.when("/About Us", {
 		templateUrl : "template/About Us.htm"
 	})
@@ -35,4 +45,35 @@ myApp.config(function($routeProvider) {
 		templateUrl : "template/Contact Us.htm"
 	})
 
+	.when("/logout", {
+		templateUrl : "c_user/Logout.html"
+	})
 });
+
+
+
+myApp.run(function($rootScope,$cookieStore)
+{
+	      console.log('I am in run function');
+	      console.log($rootScope.currentUser);
+	      if($rootScope.currentUser==undefined)
+	    	  {
+	    	        $rootScope.currentUser=$cookieStore.get('user');
+	    	  }
+	      
+	      
+	      
+	      else
+	   {
+	    	  console.log($rootScope.currentUser.userName);
+	    	  console.log($rootScope.currentUser.role);
+	    	  
+	     }
+ 
+});
+
+	      
+	      
+	      
+	      
+	      

@@ -202,9 +202,10 @@ hr{
                 <input type="text" name="blogName"  ng-model="blog.blogName" class="login_box" placeholder="Enter Blog Name" required autofocus/>
                 <p class="input_title">Blog Contents</p>
                 <textarea cols=38 name="blogContent" ng-model=blog.blogContent class="login_box" placeholder="Enter Blog Contents" required></textarea>
-             
+             <div ng-show="blog.loginName=currentUser.loginName">
                 <input type="submit" class="btn btn-primary  btn-lg"  value="Insert Blog" ng-click="insertBlog()" style="padding-left:20px"/ >
                 <input type="reset" class="btn btn-primary  btn-lg" value="Reset">
+                </div>
             </form><!-- /form -->
             
         </div><!-- /card-container -->

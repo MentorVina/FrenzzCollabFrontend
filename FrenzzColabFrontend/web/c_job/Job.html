@@ -2,9 +2,98 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link href='http://fonts.googleapis.com/css?family=Raleway:500' rel='stylesheet' type='text/css'>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
 <title>Insert title here</title>
+
+<style>
+body {
+    width:100px;
+	height:100px;
+  background: -webkit-linear-gradient(90deg, #16222A 10%, #3A6073 90%); /* Chrome 10+, Saf5.1+ */
+  background:    -moz-linear-gradient(90deg, #16222A 10%, #3A6073 90%); /* FF3.6+ */
+  background:     -ms-linear-gradient(90deg, #16222A 10%, #3A6073 90%); /* IE10 */
+  background:      -o-linear-gradient(90deg, #16222A 10%, #3A6073 90%); /* Opera 11.10+ */
+  background:         linear-gradient(90deg, #16222A 10%, #3A6073 90%); /* W3C */
+font-family: 'Raleway', sans-serif;
+}
+
+p {
+	color:#CCC;
+}
+
+.spacing {
+	padding-top:7px;
+	padding-bottom:7px;
+}
+.middlePage {
+	width: 680px;
+    height: 500px;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.logo {
+	color:#CCC;
+}</style>
 </head>
 <body>
+<div class="container" ng-controller="JobController">
+<div class="middlePage">
+<div class="page-header">
+  <h1 class="logo"> <small><i>Add job here!</i></small></h1>
+</div>
 
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h3 class="panel-title"><i>Admin Job Page</i></h3>
+  </div>
+  <div class="panel-body">
+  
+  <div class="row">
+  
+
+
+    <div class="col-md-7" style="border-left:1px solid #ccc;height:400px">
+<form class="form-horizontal">
+<fieldset>
+
+ <i>Company Name:</i><input id="company" name="company" type="text"   ng-model="job.company" placeholder="Enter campany" class="form-control input-md">
+ 
+ <i>Description:</i><input id="jobDesc" name="jobDesc" type="text"  ng-model="job.jobDesc" placeholder="Job description" class="form-control input-md">
+  
+   <i>Designation:</i><input id="jobDesignation" name="jobDesignationc" type="text"  ng-model="job.jobDesignation" placeholder="Job designation" class="form-control input-md">
+   
+  <i>Salary:</i><input id="salary" name="salary" type="text"  ng-model="job.salary" placeholder="Enter salary" class="form-control input-md">
+  
+ <i>Location:</i><br>
+  <select class="form-control input-md" name="location" ng-model="job.location">
+   <option value="Select Location">Select Your Location</option>
+  <option value="Pune">Pune</option>
+  <option value="Mumbai">Mumbai</option>
+  <option value="Bangalore">Bangalore</option>
+  <option value="Chennai">Chennai</option>
+</select><br><br>
+ <button id="singlebutton" name="singlebutton" class="btn btn-info btn-lg" ng-click="insertJob()">Go</button>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <button id="singlebutton" type="reset" name="singlebutton" class="btn btn-info btn-lg ">Reset</button>
+
+</fieldset>
+</form>
+</div>
+    
+</div>
+    
+</div>
+</div>
+
+</div>
+</div>
 </body>
 </html>
