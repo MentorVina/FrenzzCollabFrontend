@@ -16,14 +16,14 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
 <script 
-	src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.0/js.cookie.js"></script>
-	<script  
-	src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.0/js.cookie.js"></script>
+	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-cookies.js"></script>
 	
 <script src="js/MyRouteConfig.js"></script>
 <script src="c_blog/BlogController.js"></script>
 <script src="c_forum/ForumController.js"></script>
 <script src="c_job/JobController.js"></script>
+<script src="c_user/UserController.js"></script>
+
 
 <style>
 .navbar-brand {
@@ -73,19 +73,33 @@ span {
 				<!-- <ul class="nav navbar-nav navbar-left">
        <li> <a class= "navbar-brand"><span style="color:#4C9900">FrenzzCollab</span></a></li></ul> -->
 			</div>
-			<ul class="nav navbar-nav navbar-right">
+			<ul class="nav navbar-nav navbar-left">
 				<li class="active"><a href="#!Home">Home</a></li>
-				<li><a href="#!login">Login</a></li>
-				<li><a href="#!Register">Register</a></li>
-				<li><a href="#!blog">Blog</a></li>
-				<li><a href="#!displayBlog">BlogList</a></li>
-		          <li><a href="#!forum">Forum</a></li>
-		           <li><a href="#!displayForum">ForumList</a></li>
-		           <li><a href="#!job">Job</a></li>
-		           <li><a href="#!displayJob">JobList</a></li>
-		              <li><a href="#!searchJob">Job Search</a></li>
-				<li><a href="#!About Us">About Us</a></li>
-				<li><a href="#!Contact Us">Contact Us</a></li>
+				<li ng-hide="currentUser.role=='ROLEUSER'|| currentUser.role=='ROLEADMIN'"><a href="#!About Us">About Us</a></li>
+				<li ng-hide="currentUser.role=='ROLEUSER'|| currentUser.role=='ROLEADMIN'"><a href="#!Contact Us">Contact Us</a></li>
+			</ul>
+			
+			     <ul class="nav navbar-nav navbar-right">
+			      	<li ng-hide="currentUser.role=='ROLEUSER'|| currentUser.role=='ROLEADMIN'"><a href="#!Register"><span class="glyphicon glyphicon-user"></span> Register</a></li>
+			      <li ng-hide="currentUser.role=='ROLEUSER'|| currentUser.role=='ROLEADMIN'"><a href="#!login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                  
+         </ul>
+			     
+				<div class="nav navbar-nav navbar-left" ng-hide="currentUser==undefined">
+				<ul class="nav navbar-nav">
+				
+				
+				
+				<li ng-hide="currentUser.role=='ROLEUSER'"><a href="#!blog">Blog</a></li>
+				<li ng-hide="currentUser.role=='ROLEUSER'"><a href="#!displayBlog">BlogList</a></li>
+		          <li ng-hide="currentUser.role=='ROLEUSER'"><a href="#!forum">Forum</a></li>
+		           <li ng-hide="currentUser.role=='ROLEUSER'"><a href="#!displayForum">ForumList</a></li>
+		           <li ng-hide="currentUser.role=='ROLEADMIN'"><a href="#!job">Job</a></li>
+		           <li ng-hide="currentUser.role=='ROLEADMIN'"><a href="#!displayJob">JobList</a></li>
+		              <li ng-hide="currentUser.role=='ROLEUSER'"><a href="#!searchJob">Job Search</a></li>
+				<li style="padding-left:300px"><font color="white">Welcome{{currentUser.loginName}}</font>
+			<form ng-controller="UserController"><input type="submit" value="logout" ng-click="logout()" class="btn btn-info"/></form>
+				
 			</ul>
 		</div>
 		</nav>

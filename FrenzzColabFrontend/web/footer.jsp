@@ -43,22 +43,14 @@
 <div class="footer-bottom">
 <div class="container">
 					<div class="row">
-						<div class="col-sm-6 ">
+					
 							<div class="copyright-text">
-								<p>CopyRight © FrenzzCollab Pvt.Ltd 2018-2019 Digital All Rights Reserved</p>
+								<p style="height:40px; padding-left:300px">CopyRight © FrenzzCollab Pvt.Ltd 2018-2019 Digital All Rights Reserved</p>
 							</div>
-						</div> <!-- End Col -->
-						<div class="col-sm-6">							
-							<ul class="social-link pull-right">
-													
-								<li><a href=""><span class="glyphicons glyphicons-search style="font-size:24px"></span></a></li>
-								<li><a href=""><span class="glyphicon glyphicon-heart-empty"></span></a></li>
-								<li><a href=""><span class="glyphicon glyphicon-heart-empty"></span></a></li>
-								<li><a href=""><span class="glyphicon glyphicon-heart-empty"></span></a></li>
-							</ul>							
-						</div> <!-- End Col -->
-					</div>
+						
+			
 				</div>
+</div>
 </div>
 </body>
 </html>

@@ -9,7 +9,7 @@ myApp.config(function($routeProvider) {
 		templateUrl : "c_user/login.html"
 	})
 	.when("/Register", {
-		templateUrl : "c_user/Register.jsp"
+		templateUrl : "c_user/Register.html"
 	})
 	.when("/blog",{
 		templateUrl : "c_blog/Blog.html"
