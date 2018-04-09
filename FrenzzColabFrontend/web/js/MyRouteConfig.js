@@ -48,6 +48,9 @@ myApp.config(function($routeProvider) {
 	.when("/logout", {
 		templateUrl : "c_user/Logout.html"
 	})
+	.when("/uploadProfilepic", {
+		templateUrl : "c_user/UpdateProfile.html"
+	})
 });
 
 

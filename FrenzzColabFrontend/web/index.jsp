@@ -49,6 +49,12 @@
 	padding: 10px;
 	margin: 25px 15px 25px 0;
 }
+.avatar {
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
 
 span {
 	color: "#3399FF";
@@ -90,17 +96,27 @@ span {
 				
 				
 				
-				<li ng-hide="currentUser.role=='ROLEUSER'"><a href="#!blog">Blog</a></li>
-				<li ng-hide="currentUser.role=='ROLEUSER'"><a href="#!displayBlog">BlogList</a></li>
-		          <li ng-hide="currentUser.role=='ROLEUSER'"><a href="#!forum">Forum</a></li>
-		           <li ng-hide="currentUser.role=='ROLEUSER'"><a href="#!displayForum">ForumList</a></li>
-		           <li ng-hide="currentUser.role=='ROLEADMIN'"><a href="#!job">Job</a></li>
-		           <li ng-hide="currentUser.role=='ROLEADMIN'"><a href="#!displayJob">JobList</a></li>
-		              <li ng-hide="currentUser.role=='ROLEUSER'"><a href="#!searchJob">Job Search</a></li>
-				<li style="padding-left:300px"><font color="white">Welcome{{currentUser.loginName}}</font>
-			<form ng-controller="UserController"><input type="submit" value="logout" ng-click="logout()" class="btn btn-info"/></form>
+				<li ng-show="currentUser.role=='ROLEUSER'"><a href="#!blog">Blog</a></li>
+				<li ng-show="currentUser.role=='ROLEUSER'"><a href="#!uploadProfilepic">Update Profile</a></li>
+				<li ng-show="currentUser.role=='ROLEUSER'"><a href="#!displayBlog">BlogList</a></li>
+		          <li ng-show="currentUser.role=='ROLEUSER'"><a href="#!forum">Forum</a></li>
+		           <li ng-show="currentUser.role=='ROLEUSER'"><a href="#!displayForum">ForumList</a></li>
+		           <li ng-show="currentUser.role=='ROLEADMIN'"><a href="#!job">Job</a></li>
+		           <li ng-show="currentUser.role=='ROLEADMIN'"><a href="#!displayJob">JobList</a></li>
+		            <li ng-show="currentUser.role=='ROLEUSER'"><a href="#!searchJob">Job Search</a></li>
+		            </ul>
+		            </div>
+		            
+		           <div class="nav navbar-nav navbar-right" ng-hide="currentUser==undefined">
+				<ul class="nav navbar-nav">
+				 <font color="white">Welcome {{currentUser.loginName}}</font>
+				 		<img id="img1" class="avatar" src="http://localhost:8081/FrenzzColabMiddleWare/getImage/{{currentUser.loginName}}" width="20 height=20"></img>
+		<form ng-controller="UserController"><input type="submit" value="logout" ng-click="logout()" class="btn btn-info"/></form>
+		</ul>
+		</div>
+		
 				
-			</ul>
+		
 		</div>
 		</nav>
 	</div>

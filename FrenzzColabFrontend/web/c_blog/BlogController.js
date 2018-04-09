@@ -1,7 +1,7 @@
-myApp.controller("BlogController",function($scope,$http,$location)
+myApp.controller("BlogController",function($scope,$http,$location,$window)
 {
 	$scope.blog={"blogName":'',"blogContent":'',"createDate":'',"likes":0,"username":'',"status":''}
-		
+
 	
 	
 	$scope.blogdata;
@@ -13,7 +13,7 @@ myApp.controller("BlogController",function($scope,$http,$location)
 		.then(fetchAllBlog(),function(response)
      	{
 			console.log('Status Text:'+response.statusText);
-			scope.msg="Data inserted sucessfully";
+		  $window.alert("Data inserted successfully");
 		
 	     });			
 	};
@@ -38,7 +38,7 @@ myApp.controller("BlogController",function($scope,$http,$location)
 	{
 		console.log('Enter into the update blog method');
 		console.log(blogId);
-		$http.post('http://localhost:8081/FrenzzColabMiddleWare/Update/'+blogId)
+		$http.post('http://localhost:8081/FrenzzColabMiddleWare/Update/'+blogId,$scope.blog)
 		.then(fetchAllBlog(),function(response)
 				{
 			
@@ -72,7 +72,7 @@ myApp.controller("BlogController",function($scope,$http,$location)
 		        $http.get('http://localhost:8081/FrenzzColabMiddleWare/incrementLikes/'+blogId)
 		.then( fetchAllBlog(),function(response)
 		{
-			  console.log('Incerement');
+			  console.log('Incerement like'+blogId);
 			  $location.path("/displayBlog");
 			         
 			        
