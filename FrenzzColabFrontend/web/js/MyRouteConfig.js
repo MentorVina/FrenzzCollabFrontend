@@ -51,6 +51,10 @@ myApp.config(function($routeProvider) {
 	.when("/uploadProfilepic", {
 		templateUrl : "c_user/UpdateProfile.html"
 	})
+	
+	.when("/chat", {
+		templateUrl : "c_chat/Chat.html"
+	})
 });
 
 

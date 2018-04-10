@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Chat Form</title>
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<style>
+body, html {
+    height: 100%;
+    background-repeat: no-repeat;
+background: rgb(185,210,224); /* Old browsers */
+background: -moz-radial-gradient(center, ellipse cover,  rgba(185,210,224,1) 0%, rgba(187,214,228,1) 0%, rgba(186,211,225,1) 15%, rgba(186,211,225,1) 38%, rgba(169,199,215,1) 68%, rgba(169,199,215,1) 68%, rgba(169,199,215,1) 82%, rgba(158,191,208,1) 100%); /* FF3.6-15 */
+background: -webkit-radial-gradient(center, ellipse cover,  rgba(185,210,224,1) 0%,rgba(187,214,228,1) 0%,rgba(186,211,225,1) 15%,rgba(186,211,225,1) 38%,rgba(169,199,215,1) 68%,rgba(169,199,215,1) 68%,rgba(169,199,215,1) 82%,rgba(158,191,208,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: radial-gradient(ellipse at center,  rgba(185,210,224,1) 0%,rgba(187,214,228,1) 0%,rgba(186,211,225,1) 15%,rgba(186,211,225,1) 38%,rgba(169,199,215,1) 68%,rgba(169,199,215,1) 68%,rgba(169,199,215,1) 82%,rgba(158,191,208,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b9d2e0', endColorstr='#9ebfd0',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+}
+</style>
+</head>
+<body>
+<div class="container" ng-controller="ChatController"  style="padding-top:200px">
+    <form ng-submit="addMessage()" name="chatMsg">
+    <div class="col-sm-12" >
+                        <div class="row">
+                            <div class="col-sm-9 form-group">
+                                <label>Message</label>
+                                <input type="text" placeholder="Enter Chat Text" ng-model="message" class="form-control">
+                            </div>
+                            <div class="col-sm-3 form-group">
+                                <span class="count" ng-bind="max - message.length">140</span>
+                                <button ng-disabled="message.length>140||message.length==0">Send</button>
+                            </div>
+                        </div>
+    </div>
+    </form>
+    
+    <div class="col-sm-12">
+        <p ng-repeat="message in messages">
+            <span><img src="http://localhost:8081/FrenzzColabMiddleWare/getImage/{{currentUser.loginName}}" width="20" height=20"/>{{message.message}}</span>
+        </p>
+    </div>
+    
+</div>
+</body>
+</html>

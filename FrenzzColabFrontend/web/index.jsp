@@ -18,12 +18,20 @@
 <script 
 	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-cookies.js"></script>
 	
+<script 
+     src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.16.3/lodash.js"></script>
+<script 
+     src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.js"></script>
+<script 
+     src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.1/sockjs.js"></script>
+	
 <script src="js/MyRouteConfig.js"></script>
 <script src="c_blog/BlogController.js"></script>
 <script src="c_forum/ForumController.js"></script>
 <script src="c_job/JobController.js"></script>
 <script src="c_user/UserController.js"></script>
-
+<script src="c_chat/ChatController.js"></script>
+<script src="c_chat/ChatService.js"></script>
 
 <style>
 .navbar-brand {
@@ -104,6 +112,7 @@ span {
 		           <li ng-show="currentUser.role=='ROLEADMIN'"><a href="#!job">Job</a></li>
 		           <li ng-show="currentUser.role=='ROLEADMIN'"><a href="#!displayJob">JobList</a></li>
 		            <li ng-show="currentUser.role=='ROLEUSER'"><a href="#!searchJob">Job Search</a></li>
+		             <li ng-show="currentUser.role=='ROLEUSER'"><a href="#!chat">Chat</a></li>
 		            </ul>
 		            </div>
 		            
