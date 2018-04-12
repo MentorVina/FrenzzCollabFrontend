@@ -32,6 +32,8 @@
 <script src="c_user/UserController.js"></script>
 <script src="c_chat/ChatController.js"></script>
 <script src="c_chat/ChatService.js"></script>
+<script src="c_friend/FriendController.js"></script>
+
 
 <style>
 .navbar-brand {
@@ -113,6 +115,7 @@ span {
 		           <li ng-show="currentUser.role=='ROLEADMIN'"><a href="#!displayJob">JobList</a></li>
 		            <li ng-show="currentUser.role=='ROLEUSER'"><a href="#!searchJob">Job Search</a></li>
 		             <li ng-show="currentUser.role=='ROLEUSER'"><a href="#!chat">Chat</a></li>
+		                 <li ng-show="currentUser.role=='ROLEUSER'"><a href="#!friend">Friend</a></li>
 		            </ul>
 		            </div>
 		            

@@ -55,7 +55,12 @@ myApp.config(function($routeProvider) {
 	.when("/chat", {
 		templateUrl : "c_chat/Chat.html"
 	})
+	
+	.when("/friend", {
+	templateUrl : "c_friend/ShowAllFriendRequst.html"
+})
 });
+
 
 
 
