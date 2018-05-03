@@ -1,6 +1,6 @@
 myApp.controller("UserController",function($scope,$http,$location,$rootScope,$cookieStore)
 {
-	$scope.user={"loginName":'',"pass":'',"role":'',"userName":'',"email":'',"gender":'',"age":0,"address":'',"isOnline":'',"contactNo":'',"dob":''}
+	$scope.user={"loginName":'',"pass":'',"role":'',"userName":'',"email":'',"gender":'',"age":'0',"address":'',"isOnline":'',"contactNo":'',"dob":''}
 		
 	
 	
@@ -14,13 +14,37 @@ myApp.controller("UserController",function($scope,$http,$location,$rootScope,$co
 		.then(fetchAllUser(),function(response)
      	{
 			console.log('Status Text:'+response.statusText);
-			scope.msg="Data inserted sucessfully";
+			alert("Data inserted sucessfully");
 		
 	     });			
 	};
 	
 	
+	$scope.updateUser=function(loginName)
+	{
+		console.log('Enter into the update  method');
+		console.log(loginName);
+		$http.put('http://localhost:8081/FrenzzColabMiddleWare/UpdateUser/'+loginName,$scope.user)
+
+		.then(fetchAllUser(),function(response)
+				{
+			         console.log('hi');
+			        console.log('Status Text:'+response.statusText);
+			        
+				});
+	};
 	
+	
+	$scope.editUser = function(loginName){
+        
+        console.log("edit Function");
+		$http.get('http://localhost:8081/FrenzzColabMiddleWare/getUserById/'+loginName)
+		.then(function(response){
+			console.log(loginName);
+			$scope.user = response.data;			
+			
+		});
+	};
 	
 	
 	$rootScope.login=function()
@@ -35,11 +59,12 @@ myApp.controller("UserController",function($scope,$http,$location,$rootScope,$co
 			$rootScope.currentUser=response.data;
 			$cookieStore.put('user',response.data);
 			console.log($rootScope.currentUser.role);
-			if($rootScope.currentUser.role=ROLEADMIN)
+			if($rootScope.currentUser.role=='ROLEUSER')
 				{
 				$location.path("/");
+				alert("Login sucssfully");
 				}
-			else
+			else 
 				{
 				$location.path("/");
 				}
@@ -50,14 +75,32 @@ myApp.controller("UserController",function($scope,$http,$location,$rootScope,$co
 	
 	
 	
-	$scope.logout=function()
+	$rootScope.logout=function()
 	{
 		console.log('Enter into the logout method');
-		delete $rootScope.currentUser;
-		$cookieStore.remove('user');
-	   $location.path("/logout");
-     }
-	
+		$http.post('http://localhost:8081/FrenzzColabMiddleWare/logout',$scope.user)
+//		
+//		delete $rootScope.currentUser;
+//		$cookieStore.remove('user');
+//	   $location.path("/logout");
+//     }
+		.then(function(response)
+		     	{
+					console.log("Enter into logout function");
+					console.log(response.status);
+					$scope.user=response.data;
+					$rootScope.currentUser=response.data;
+					
+				
+					console.log($rootScope.currentUser.role)
+						$cookieStore.remove('user');
+						delete $rootScope.currentUser;
+						$location.path("/logout");
+						alert("Logout sucssfully");
+						
+				
+			     });			
+			};
 	
 	function fetchAllUser()
 	{

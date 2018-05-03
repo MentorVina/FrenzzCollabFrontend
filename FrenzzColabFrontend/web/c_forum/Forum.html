@@ -202,7 +202,7 @@ hr{
                 <input type="text" name="forumName"  ng-model="forum.forumName" class="login_box" placeholder="Enter Forum Name" required autofocus/>
                 <p class="input_title">Forum Contents</p>
                 <textarea cols=38 name="forumContent" ng-model=forum.forumContent class="login_box" placeholder="Enter Forum Contents" required></textarea>
-             
+              <div ng-show="forum.loginName=currentUser.loginName">
                 <input type="submit" width ="30px" class="btn btn-primary"  value="Insert Forum" ng-click="insertForum()" style="padding-left:20px"/ >
                 <input type="reset"  class="btn btn-primary  btn-md" value="Reset">
             </form><!-- /form -->

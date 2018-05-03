@@ -59,10 +59,13 @@
                         <th><input type="text" class="form-control" placeholder="Blog Name" disabled></th>
                         <th><input type="text" class="form-control" placeholder="Blog Contents" disabled></th>
                           <th><input type="text" class="form-control" placeholder="Create Date" disabled></th>
+                      
                             <th><input type="text" class="form-control" placeholder="Likes" disabled></th>
+                            
                               <th><input type="text" class="form-control" placeholder="Status" disabled></th>
                                 <th><input type="text" class="form-control" placeholder="Action" disabled></th>
-                                 <th><input type="text" class="form-control" placeholder="" disabled></th>
+                                
+                               
                        
                     </tr>
                 </thead>
@@ -73,20 +76,155 @@
                         <td>{{blog.blogName}}</td>
                         <td>{{blog.blogContent}}</td>
                         <td>{{blog.createDate}}</td>
+
                         <td>{{blog.likes}}</td>
-                        <td>{{blog.status}}
-                        
-                        </td>
-                       <td colspan="3px">
-                           <a href="" class="btn btn-info btn btn" ng-click="incrementLike(blog.blogId)"><span class="glyphicon glyphicon-thumbs-up"></span></a>
-                           <a href="" class="btn btn-danger" ng-click="deleteBlog(blog.blogId)"><span class="glyphicon glyphicon-trash"></span></a>
-                           <a href="" class="btn btn-success" ng-click="editBlog(blog.blogId)"><span class="glyphicon glyphicon-pencil"></span></a>
+                        <td>{{blog.status}}</td>
+                         <td colspan="10px">
+                           <a href="" class="btn btn-info btn btn"  ng-hide="blog.username==currentUser.loginName ||currentUser.role=='ROLEADMIN'||blog.status=='NA'" ng-click="incrementLike(blog.blogId)"><span class="glyphicon glyphicon-thumbs-up"></span></a>
+                           <a href="" class="btn btn-danger" ng-show="blog.username==currentUser.loginName" ng-click="deleteBlog(blog.blogId)"><span class="glyphicon glyphicon-trash"></span></a>
+                           <a href="" class="btn btn-success" ng-show="blog.username==currentUser.loginName" ng-click="editBlog(blog.blogId)" data-target="#editBlogForm" data-toggle="modal"><span class="glyphicon glyphicon-pencil"></span></a>
+                           <button type="submit" ng-hide="blog.username==currentUser.loginName ||currentUser.role=='ROLEADMIN' ||blog.status=='NA'"   ng-click="editBlog(blog.blogId)" 
+                          class="btn btn-primary btn-md" id="btnShowAddComment" data-target="#addBlogComment" data-toggle="modal" >Comment</button>
+                           <button type="submit"    ng-hide="blog.status=='NA'"  ng-click="listblogComments(blog.blogId)"  class="btn btn-primary btn-md" id="btnShowComment" data-target="#viewBlogComment" data-toggle="modal" >View Comments</button>
+                             <a href="" class=" btn btn-success"  ng-show="currentUser.role=='ROLEADMIN' "  ng-click="approveBlog(blog.blogId)">Approve</a> 
+                               <a href="" class="btn btn-danger"   ng-show="currentUser.role=='ROLEADMIN'" ng-click="rejectBlog(blog.blogId)">Reject</a> 
                       </td>
                    </tr>
                 </tbody>
             </table>
+            
+            
+            
         </div>
     </div>
+    
+    <!-- ---------------  Modal Dialog for Edit/Update Blog ---------------------- -->
+ 	<div class="modal fade" id="editBlogForm" tabindex="-1" data-keyboard="false" data-backdrop="static" role="dialog">
+	
+    <div class="modal-dialog modal-sm">
+    
+      <!-- Modal content-->
+      <div class="modal-content" style="float: left;">
+        <div class="modal-header madal-sm">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Edit Blog</h4>
+        </div>
+				<div class="modal-body">
+					<div class="row">
+						<form class="col-md-12 center-block" id="blogForm" method="POST">
+							<div class="form-group">
+								<input type="hidden" ng-model="blog.blogId" ng-bind="blog.blogId"/>
+							
+								<input type="text" class="form-control input-lg" name="blogName"
+									placeholder="Blog name" ng-model="blog.blogName" />
+							</div>
+							<div class="form-group">
+								<textarea class="form-control input-lg" rows="3"
+									name="blogContent" placeholder="Blog content"
+									ng-model="blog.blogContent" >
+								</textarea>
+							</div>
+							<div class=form-group>
+								<input type="submit" class="btn btn-lg btn-success" id="btnUpdateBlog"
+									value="Update Blog" ng-click="updateBlog(blog.blogId)">
+								<input type="reset" class="btn btn-lg btn-default" value="Reset">
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+	
+	
+	   <!-- ---------------  Modal Dialog for comment ---------------------- -->
+	
+	
+	<div class="modal fade" id="addBlogComment" tabindex="-1" data-keyboard="false" data-backdrop="static" role="dialog">
+   <div class="modal-dialog modal-sm">
+    
+      <!-- Modal content-->
+      <div class="modal-content" style="float: left;">
+        <div class="modal-header madal-sm">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Insert Comment</h4>
+        </div>
+				<div class="modal-body">
+					<div class="row">
+						<form class="col-md-12 center-block" id="blogForm" method="POST">
+							<div class="form-group">
+								<input type="hidden" ng-model="blog.blogId" ng-bind="blog.blogId">
+							</div>
+							
+								<div class="form-group">
+								<textarea class="form-control input-lg" rows="3"
+									name="commentText" placeholder=" Comment"
+									ng-model="blogComment.commentText" >
+								</textarea>
+							</div>
+							
+							<div class=form-group>
+							
+								<input type="submit" class="btn btn-lg btn-success"
+								value="Add Comment" ng-click="insertBlogComments(blog.blogId)" id="btnAddComment" data-dismiss="modal" > <input
+								type="reset" class="btn btn-lg btn-default" value="Reset">
+						</div>
+							
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div> 
+        
+       <!-- ---------------  Modal Dialog for commentlist ---------------------- -->   
+        
+        
+      <div class="modal fade" id="viewBlogComment" tabindex="-1" data-keyboard="false" data-backdrop="static" role="dialog">
+   <div class="modal-dialog" style="float: left;">
+    
+      <!-- Modal content-->
+      <div class="modal-content" >
+        <div class="modal-header madal-sm">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">View Comments</h4>
+        </div>
+				<div class="modal-body">
+					 <div class="modal-body">
+          <div class="table-responsive">
+<table class="table table-hover">
+ <thead>
+ <tr>
+ <th>Image</th>
+  <th>UserName</th>
+  <th>Comment</th>  
+  <th>Date</th>         
+  <th>Action</th>
+  </tr>
+ </thead>
+<tbody>
+       <tr ng-repeat="blogComment in blogcomments">
+                       <td><img id="img1" class="avatar" src="http://localhost:8081/FrenzzColabMiddleWare/getImage/{{blogComment.username}}" width="20 height=20"></img>
+                        <td>{{blogComment.username}}</td>
+                        <td>{{blogComment.commentText}}</td> 
+                         <td>{{blogComment.commentDate}}</td>                       
+                       <td colspan="3px">
+                            
+                          <button type="button" ng-click="deleteBlogComment(blogComment.commentId)" class="btn btn-danger" data-dismiss="modal" ><span class="glyphicon glyphicon-trash"></span></a></button>
+                        </td>
+                            
+         </tr>
+ </tbody>
+</table>
+					
+      </div>
+      
+    </div>
+  </div>
+  
 </div>
-</body>
-</html>
+</div>
+</div>
+</div>

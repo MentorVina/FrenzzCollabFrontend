@@ -75,14 +75,147 @@
                         
                        <td>
                            
-                           <a href=" " class="btn btn-danger" ng-click="deleteForum(forum.forumId)"> <span class="glyphicon glyphicon-trash"></span></a>
-                           <a href="" class="btn btn-success"   ng-click=" "> <span class="glyphicon glyphicon-pencil"></span></a>
+                           <a href=" " class="btn btn-danger"  ng-show="forum.username==currentUser.loginName"  ng-click="deleteForum(forum.forumId)"> <span class="glyphicon glyphicon-trash"></span></a>
+                           
+                           <a href="" class="btn btn-success" ng-show="forum.username==currentUser.loginName" ng-click="editForum(forum.forumId)" data-target="#editForumForm" data-toggle="modal"><span class="glyphicon glyphicon-pencil"></span></a>
+                           <button type="submit" ng-hide="forum.username==currentUser.loginName ||currentUser.role=='ROLEADMIN' ||forum.status=='NA'"   ng-click="editForum(forum.forumId)" 
+                          class="btn btn-primary btn-md" id="btnShowAddComment" data-target="#addForumComment" data-toggle="modal" >Comment</button>
+                           <button type="submit"  ng-hide="forum.status=='NA'"  ng-click="listforumComments(forum.forumId)"  class="btn btn-primary btn-md" id="btnShowComment" data-target="#viewForumComment" data-toggle="modal" >View Comments</button>
                       </td>
                    </tr>
                 </tbody>
             </table>
         </div>
     </div>
+    
+     <!-- ---------------  Modal Dialog for Edit/Update Forum ---------------------- -->
+ 	<div class="modal fade" id="editForumForm" tabindex="-1" data-keyboard="false" data-backdrop="static" role="dialog">
+	
+    <div class="modal-dialog modal-sm">
+    
+      <!-- Modal content-->
+      <div class="modal-content" style="float: left;">
+        <div class="modal-header madal-sm">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Edit Forum</h4>
+        </div>
+				<div class="modal-body">
+					<div class="row">
+						<form class="col-md-12 center-block" id="forumForm" method="POST">
+							<div class="form-group">
+								<input type="hidden" ng-model="forum.forumId" ng-bind="forum.forumId"/>
+						
+								<input type="text" class="form-control input-lg" name="forumName"
+									placeholder="Forum name" ng-model="forum.forumName" />
+							</div>
+							<div class="form-group">
+								<textarea class="form-control input-lg" rows="3"
+									name="forumContent" placeholder="Forum content"
+									ng-model="forum.forumContent" >
+								</textarea>
+							</div>
+							<div class=form-group>
+								<input type="submit" class="btn btn-lg btn-success" id="btnUpdateBlog"
+									value="Update Forum" ng-click="updateForum(forum.forumId)">
+								<input type="reset" class="btn btn-lg btn-default" value="Reset">
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	  <!-- ---------------  Modal Dialog for Forum Comment ---------------------- -->
+    <div class="modal fade" id="addForumComment" tabindex="-1" data-keyboard="false" data-backdrop="static" role="dialog">
+   <div class="modal-dialog modal-sm">
+    
+      <!-- Modal content-->
+      <div class="modal-content" style="float: left;">
+        <div class="modal-header madal-sm">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Insert Comment</h4>
+        </div>
+				<div class="modal-body">
+					<div class="row">
+						<form class="col-md-12 center-block" id="forumForm" method="POST">
+							<div class="form-group">
+								<input type="hidden" ng-model="forum.forumId" ng-bind="forum.forumId">
+							</div>
+							
+								<div class="form-group">
+								<textarea class="form-control input-lg" rows="3"
+									name="commentText" placeholder=" Comment"
+									ng-model="forumComment.commentText" >
+								</textarea>
+							</div>
+							
+							<div class=form-group>
+							
+								<input type="submit" class="btn btn-lg btn-success"
+								value="Add Comment" ng-click="insertForumComments(forum.forumId)" id="btnAddComment" data-dismiss="modal" > <input
+								type="reset" class="btn btn-lg btn-default" value="Reset">
+						</div>
+							
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div> 
+    
+    <!-- ---------------  Modal Dialog for commentlist ---------------------- -->   
+        
+        
+      <div class="modal fade" id="viewForumComment" tabindex="-1" data-keyboard="false" data-backdrop="static" role="dialog">
+   <div class="modal-dialog" style="float: left;">
+    
+      <!-- Modal content-->
+      <div class="modal-content" >
+        <div class="modal-header madal-sm">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">View Comments</h4>
+        </div>
+				<div class="modal-body">
+					 <div class="modal-body">
+          <div class="table-responsive">
+<table class="table table-hover">
+ <thead>
+ <tr>
+ <th>Image</th>
+  <th>UserName</th>
+  <th>Comment</th>  
+  <th>Date</th>         
+  <th>Action</th>
+  </tr>
+ </thead>
+<tbody>
+       <tr ng-repeat="forumComment in forumcomments">
+                       <td><img id="img1" class="avatar" src="http://localhost:8081/FrenzzColabMiddleWare/getImage/{{forumComment.userName}}" width="20 height=20"></img>
+                        <td>{{forumComment.userName}}</td>
+                        <td>{{forumComment.commentText}}</td> 
+                         <td>{{forumComment.commentDate}}</td>                       
+                       <td colspan="3px">
+                            
+                          <button type="button" ng-click="deleteForumComment(forumComment.commentId)" class="btn btn-danger" data-dismiss="modal" ><span class="glyphicon glyphicon-trash"></span></a></button>
+                        </td>
+                            
+         </tr>
+ </tbody>
+</table>
+					
+      </div>
+      
+    </div>
+  </div>
+  
 </div>
+</div>
+</div>
+</div> 
+    
+    
+    
+    
+
 </body>
 </html>

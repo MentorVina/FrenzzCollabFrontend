@@ -3,7 +3,10 @@ var myApp=angular.module("myApp",['ngRoute',,'ngCookies']);
 
 myApp.config(function($routeProvider) {
 	$routeProvider.when("/", {
-		templateUrl : "/index.jsp"
+		templateUrl : "template/Home.html"
+	})
+	.when("/home", {
+		templateUrl : "template/Home.html"
 	})
 	.when("/login", {
 		templateUrl : "c_user/login.html"
@@ -51,6 +54,9 @@ myApp.config(function($routeProvider) {
 	.when("/uploadProfilepic", {
 		templateUrl : "c_user/UpdateProfile.html"
 	})
+	
+	
+	
 	
 	.when("/chat", {
 		templateUrl : "c_chat/Chat.html"

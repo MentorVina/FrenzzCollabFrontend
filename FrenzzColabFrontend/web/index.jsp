@@ -24,6 +24,9 @@
      src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.js"></script>
 <script 
      src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.1/sockjs.js"></script>
+     <link href="template/css/business-frontpage.css" rel="stylesheet">
+     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
 	
 <script src="js/MyRouteConfig.js"></script>
 <script src="c_blog/BlogController.js"></script>
@@ -90,7 +93,7 @@ span {
        <li> <a class= "navbar-brand"><span style="color:#4C9900">FrenzzCollab</span></a></li></ul> -->
 			</div>
 			<ul class="nav navbar-nav navbar-left">
-				<li class="active"><a href="#!Home">Home</a></li>
+				<li class="active"><a href="#!home">Home</a></li>
 				<li ng-hide="currentUser.role=='ROLEUSER'|| currentUser.role=='ROLEADMIN'"><a href="#!About Us">About Us</a></li>
 				<li ng-hide="currentUser.role=='ROLEUSER'|| currentUser.role=='ROLEADMIN'"><a href="#!Contact Us">Contact Us</a></li>
 			</ul>
@@ -107,12 +110,13 @@ span {
 				
 				
 				<li ng-show="currentUser.role=='ROLEUSER'"><a href="#!blog">Blog</a></li>
-				<li ng-show="currentUser.role=='ROLEUSER'"><a href="#!uploadProfilepic">Update Profile</a></li>
-				<li ng-show="currentUser.role=='ROLEUSER'"><a href="#!displayBlog">BlogList</a></li>
+			
+				<li ng-show="currentUser.role=='ROLEUSER'||currentUser.role=='ROLEADMIN'"><a href="#!displayBlog">BlogList</a></li>
 		          <li ng-show="currentUser.role=='ROLEUSER'"><a href="#!forum">Forum</a></li>
 		           <li ng-show="currentUser.role=='ROLEUSER'"><a href="#!displayForum">ForumList</a></li>
 		           <li ng-show="currentUser.role=='ROLEADMIN'"><a href="#!job">Job</a></li>
 		           <li ng-show="currentUser.role=='ROLEADMIN'"><a href="#!displayJob">JobList</a></li>
+		           <li ng-show="currentUser.role=='ROLEUSER'||currentUser.role=='ROLEADMIN'"><a href="#!uploadProfilepic">Update Profile</a></li>
 		            <li ng-show="currentUser.role=='ROLEUSER'"><a href="#!searchJob">Job Search</a></li>
 		             <li ng-show="currentUser.role=='ROLEUSER'"><a href="#!chat">Chat</a></li>
 		                 <li ng-show="currentUser.role=='ROLEUSER'"><a href="#!friend">Friend</a></li>
@@ -123,7 +127,7 @@ span {
 				<ul class="nav navbar-nav">
 				 <font color="white">Welcome {{currentUser.loginName}}</font>
 				 		<img id="img1" class="avatar" src="http://localhost:8081/FrenzzColabMiddleWare/getImage/{{currentUser.loginName}}" width="20 height=20"></img>
-		<form ng-controller="UserController"><input type="submit" value="logout" ng-click="logout()" class="btn btn-info"/></form>
+		<form ng-controller="UserController"><input type="submit" value="logout" ng-click="logout()" class="btn btn-info btn-sm"/></form>
 		</ul>
 		</div>
 		
@@ -131,8 +135,12 @@ span {
 		
 		</div>
 		</nav>
+		<br><br>
+		
 	</div>
-	<div ng-view> </div>
+
+	<div ng-view>	</div>
+	<br><br><br><br> <br><br><br><br> 
 	<jsp:include page="footer.jsp" />
 
 
